@@ -1,0 +1,47 @@
+import plantas.*
+import parcelas.*
+
+test "test de plantas" {
+
+    const mentoplus = new Menta(altura = 1, anioDeObtencion = 2010)
+    const mentaFuerte = new Menta(altura = 0.3, anioDeObtencion = 2004)
+    assert.that(mentoplus.daSemillas())
+    assert.notThat(mentaFuerte.daSemillas())
+
+    const sojaTamari = new Soja(altura = 0.6, anioDeObtencion = 2009)
+    assert.equals(8, sojaTamari.horasDeSolToleradas())
+
+    const quinoaNegra = new Quinoa(altura = 0.2, anioDeObtencion = 2010, espacioQueOcupa = 0.2)
+    assert.that(quinoaNegra.daSemillas())
+
+    const quinoaRoja = new Quinoa(altura = 0.9, anioDeObtencion = 2003, espacioQueOcupa = 0.9)
+    assert.that(quinoaRoja.daSemillas())
+
+    const sojaTransgenica = new SojaTrans(altura = 0.8, anioDeObtencion = 2019)
+    assert.notThat(sojaTransgenica.daSemillas())
+
+    const ladyPeperina = new Peperina(altura = 1.5, anioDeObtencion = 2017)
+    assert.equals(5,ladyPeperina.espacioQueOcupa())
+
+    
+ }
+ 
+ 
+ test "test parcelas"
+{
+	const primerParcelita = new Parcelas(ancho = 20, largo = 1, horasDeSol = 10)
+	assert.equals(20, primerParcelita.superficie())
+	assert.equals(4, primerParcelita.cantidadMaxima()) 
+	const sojaTamari2 = new Soja(altura = 1.5, anioDeObtencion = 2010)
+    const sojaTamari3 = new Soja(altura = 1.5, anioDeObtencion = 2010)
+    const sojaTamari4 = new Soja(altura = 1.5, anioDeObtencion = 2010)
+    const sojaTamari5 = new Soja(altura = 1.5, anioDeObtencion = 2010)
+	primerParcelita.plantar(sojaTamari2)
+	primerParcelita.plantar(sojaTamari3)
+	primerParcelita.plantar(sojaTamari4)
+	assert.notThat(primerParcelita.tieneSangreJoven())
+	assert.throwsException{primerParcelita.plantar(sojaTamari5)}
+}
+ 
+ 
+ 
